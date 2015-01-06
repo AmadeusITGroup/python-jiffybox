@@ -1,7 +1,12 @@
 Changelog for jiffybox
 ============================
 
-0.5.0-dev (unreleased)
+0.5.0 (unreleased)
+--------------------
+
+- Nothing changed yet
+
+0.5.0-dev (2015-01-06)
 --------------------
 
 - Nothing changed yet
