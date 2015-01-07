@@ -1,7 +1,7 @@
 Changelog for jiffybox
 ============================
 
-0.5.1 (unreleased)
+X.X.X (unreleased)
 ------------------
 
 - Packaging fixes
