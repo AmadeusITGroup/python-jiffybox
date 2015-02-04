@@ -10,7 +10,7 @@ with open('CHANGES.rst', 'r', 'utf-8') as f:
     changes = f.read()
 
 setup(name='jiffybox',
-      version='0.5.1',
+      version='0.9.0',
       description='API wrapper for jiffybox.de',
       long_description=readme + '\n\n' + changes,
       author='Amadeus IT Group',
