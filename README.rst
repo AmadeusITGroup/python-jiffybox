@@ -5,6 +5,10 @@ A wrapper around the API of JiffyBox (http://jiffybox.de)
 Consisting of a :ref:`python library <api>`
 and a :ref:`command line program <cli>` using the library.
 
+Docs: http://python-jiffybox.readthedocs.org
+
+Downloads: https://pypi.python.org/pypi/jiffybox/
+
 Current features
 ----------------
 
