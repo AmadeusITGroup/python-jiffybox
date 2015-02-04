@@ -1,9 +1,11 @@
 # coding=utf-8
 
 import datetime
+import os
 import pkg_resources
 
-import sphinx_rtd_theme
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+
 
 dist = pkg_resources.get_distribution('jiffybox')
 
@@ -20,7 +22,11 @@ source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build']
 pygments_style = 'sphinx'
-html_theme = 'default'
-html_theme = 'sphinx_rtd_theme'
-html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 html_static_path = ['_static']
+
+if not on_rtd:
+    import sphinx_rtd_theme
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
+    html_theme = 'sphinx_rtd_theme'
+else:
+    html_theme = 'default'
