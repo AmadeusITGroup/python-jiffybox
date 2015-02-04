@@ -4,7 +4,7 @@ Changelog for jiffybox
 X.X.X (unreleased)
 ------------------
 
-- Nothing changed yet
+- Packaging fixes
 
 0.9.0 (2015-02-04)
 ------------------

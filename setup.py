@@ -19,6 +19,8 @@ setup(name='jiffybox',
       maintainer_email='thomas.weissschuh@de.amadeus.com',
       url='https://github.com/AmadeusITGroup/python-jiffybox',
       packages=['jiffybox'],
+      license='GPL3',
+      keywords='API jiffybox domainfactory',
       zip_safe=True,
       install_requires=[
           'requests',
