@@ -87,6 +87,19 @@ def create_box(name, plan, distribution, sshkey):
                          use_sshkey=sshkey)
     print_data([box])
 
+@box.command('delete')
+@click.argument('id')
+@click.option('--no-confirm', is_flag=True, default=False)
+def delete_box(id, no_confirm):
+    if no_confirm:
+        API.delete_box(id)
+    else:
+        box = API.box(id)
+        click.confirm(
+                'Really delete box {0} ({1})?'.format(id, box.name),
+                abort=True)
+        if not box.delete():
+            raise click.exceptions.RuntimeError('could not delete box')
 
 @jiffybox.command()
 def distributions():

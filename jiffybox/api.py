@@ -75,6 +75,9 @@ class _JiffyResource(_JiffyObject):
     def _put(self, data=None, endpoint=''):
         return self.api._put(self._api_location, data, endpoint)
 
+    def _delete(self, data=None, endpoint=''):
+        return self.api._delete(self._api_location, data, endpoint)
+
     @classmethod
     def all(cls, api):
         res = api._get(cls._api_location)
@@ -249,6 +252,9 @@ class Box(_JiffyResource):
         res = api._post(cls._api_location, data=data)
         return cls(res, api)
 
+    def delete(self):
+        return self.api.delete_box(self.id)
+
     @property
     def ready(self):
         return self.status == 'READY'
@@ -357,6 +363,16 @@ class JiffyBox(object):
         """
         return Box.create(self, *args, **kwargs)
 
+    def delete_box(self, id):
+        """
+        Delete a specific box
+
+        :param id: ID of the distribution
+        :type id: string
+        :rtype: bool
+        """
+        return self._delete(Box._api_location, endpoint=id)
+
     def _get(self, api_location, endpoint=''):
         url = self._make_url(api_location, endpoint)
         _logger.debug('GET: {0}'.format(url))
@@ -373,6 +389,12 @@ class JiffyBox(object):
         url = self._make_url(api_location, endpoint)
         _logger.debug('PUT: {0} , data: {1}'.format(url, data))
         res = self._connection.put(url, data=data)
+        return self._extract_results(res)
+
+    def _delete(self, api_location, data=None, endpoint=''):
+        url = self._make_url(api_location, endpoint)
+        _logger.debug('DELETE: {0} , data: {1}'.format(url, data))
+        res = self._connection.delete(url, data=data)
         return self._extract_results(res)
 
     @staticmethod
