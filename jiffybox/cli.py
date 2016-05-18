@@ -56,24 +56,24 @@ def jiffybox(api_key, verbose, output_format, pager):
     USE_PAGER = pager
 
 
-@jiffybox.group('box', help='Manage boxes')
+@jiffybox.group('box', help='Manages boxes')
 def box():
     pass
 
 
-@box.command('list')
+@box.command('list', help='Lists all boxes in account')
 def list_boxes():
     print_data(API.boxes())
 
 
-@box.command('show')
+@box.command('show', help='Shows a single box')
 @click.argument('id')
 def show_box(id):
     box = API.box(id)
     print_data([box])
 
 
-@box.command('create')
+@box.command('create', help='Creates and start a new box')
 @click.argument('name')
 @click.argument('plan')
 @click.argument('distribution')
@@ -86,7 +86,7 @@ def create_box(name, plan, distribution, sshkey):
     print_data([box])
 
 
-@box.command('delete')
+@box.command('delete', help='Deletes a box')
 @click.argument('id')
 @click.option('--no-confirm', is_flag=True, default=False)
 def delete_box(id, no_confirm):
@@ -100,11 +100,11 @@ def delete_box(id, no_confirm):
             raise click.exceptions.RuntimeError('could not delete box')
 
 
-@jiffybox.command(help='Show a list of distributions')
+@jiffybox.command(help='Shows a list of distributions')
 def distributions():
     print_data(API.distributions())
 
 
-@jiffybox.command(help='Show a list of pricing plans')
+@jiffybox.command(help='Shows a list of pricing plans')
 def plans():
     print_data(API.plans())
