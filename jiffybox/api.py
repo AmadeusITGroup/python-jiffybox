@@ -276,6 +276,10 @@ class Box(_JiffyResource):
         res = self._put(endpoint=self.id, data={'status': 'START'})
         return type(self)(res, self.api)
 
+    def stop(self):
+        res = self._put(endpoint=self.id, data={'status': 'SHUTDOWN'})
+        return type(self)(res, self.api)
+
     @property
     def public_ips(self):
         return self.ips.get('public', None)
