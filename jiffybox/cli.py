@@ -19,9 +19,13 @@ def format_data(data):
     data = sort_data(data)
     if OUTPUT_FORMAT == 'plain':
         for elem in data:
-            echo('id: ' + str(elem.id))
+            header = None
+            if hasattr(elem, 'name') and hasattr(elem, 'id'):
+                header = '{}({})'.format(elem.name, elem.id)
+            if header:
+                echo(header)
             for attr in sorted(elem._attributes.keys()):
-                echo('  ' + attr + ': ' + str(getattr(elem, attr)))
+                echo('  {:21s}: {}'.format(attr, getattr(elem, attr)))
 
     # FIXME id on top in json
     elif OUTPUT_FORMAT == 'json':
