@@ -27,7 +27,7 @@ def format_data(data):
     elif OUTPUT_FORMAT == 'json':
         return '\n'.join([json.dumps(elem.json) for elem in data])
     elif OUTPUT_FORMAT == 'json-pretty':
-        return '\n'.join([json.dumps(elem.json, indent=True) for elem in data])
+        return '\n'.join([json.dumps(elem.json, indent=2) for elem in data])
 
 
 def output(data):
