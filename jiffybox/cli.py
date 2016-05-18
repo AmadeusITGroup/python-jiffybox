@@ -89,15 +89,26 @@ def create_box(name, plan, distribution, sshkey):
 @box.command('delete', help='Deletes a box')
 @click.argument('id')
 @click.option('--no-confirm', is_flag=True, default=False)
-def delete_box(id, no_confirm):
-    if no_confirm:
-        API.delete_box(id)
-    else:
-        box = API.box(id)
-        click.confirm('Really delete box {0} ({1})?'.format(id, box.name),
-                      abort=True)
-        if not box.delete():
-            raise click.exceptions.RuntimeError('could not delete box')
+@click.option('--force', '-f', is_flag=True, help='Stop jiffybox if necessary')
+def delete_box(id, no_confirm, force):
+    box = API.box(id)
+    box_desc = '{0} ({1})'.format(box.id, box.name)
+
+    if not no_confirm:
+        click.confirm('Really delete box {}?'.format(box_desc), abort=True)
+
+    echo('Waiting for box to become ready')
+    box.wait_for_status()
+
+    if box.running and force:
+        echo('Stopping box {}'.format(box_desc))
+        box.stop()
+        box.wait_for_status()
+
+    if not box.delete():
+        raise click.exceptions.RuntimeError('could not delete box')
+
+    echo('Removed box {}'.format(box_desc))
 
 
 @jiffybox.command(help='Shows a list of distributions')
