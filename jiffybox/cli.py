@@ -5,6 +5,7 @@ import click
 from click import echo, echo_via_pager
 
 from .api import JiffyBox
+from .format import PlainFormatVisitor
 
 API = None
 OUTPUT_FORMAT = None
@@ -18,15 +19,7 @@ def sort_data(data):
 def format_data(data):
     data = sort_data(data)
     if OUTPUT_FORMAT == 'plain':
-        for elem in data:
-            header = None
-            if hasattr(elem, 'name') and hasattr(elem, 'id'):
-                header = '{}({})'.format(elem.name, elem.id)
-            if header:
-                echo(header)
-            for attr in sorted(elem._attributes.keys()):
-                echo('  {:21s}: {}'.format(attr, getattr(elem, attr)))
-
+        return '\n\n'.join(PlainFormatVisitor().visit(box) for box in data)
     # FIXME id on top in json
     elif OUTPUT_FORMAT == 'json':
         return '\n'.join([json.dumps(elem.json) for elem in data])
