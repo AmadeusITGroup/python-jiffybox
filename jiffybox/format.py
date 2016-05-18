@@ -22,6 +22,9 @@ class PlainFormatVisitor(Visitor):
 
         return buf + '\n'.join(parts)
 
+    def visit_list(self, node):
+        return ', '.join(self.visit(child) for child in node)
+
     def visit_object(self, node):
         if hasattr(node, '_attributes'):
             obj_dict = {
