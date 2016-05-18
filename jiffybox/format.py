@@ -5,11 +5,6 @@ class PlainFormatVisitor(Visitor):
     def __init__(self):
         self.indent = 0
 
-    def visit_Box(self, node):
-        buf = "{}({}):".format(node.name, node.id)
-        buf += self.visit_object(node)
-        return buf
-
     def visit_dict(self, node):
         if not node:
             return ''
@@ -27,9 +22,15 @@ class PlainFormatVisitor(Visitor):
 
     def visit_object(self, node):
         if hasattr(node, '_attributes'):
+            buf = ''
+            if hasattr(node, 'name'):
+                buf += node.name
+            if hasattr(node, 'id'):
+                buf += '({})'.format(node.id)
             obj_dict = {
                 attr: getattr(node, attr)
                 for attr in node._attributes.keys()
             }
-            return self.visit(obj_dict)
+            buf += self.visit(obj_dict)
+            return buf
         return str(node)
