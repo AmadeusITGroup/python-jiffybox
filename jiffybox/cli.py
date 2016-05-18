@@ -20,7 +20,7 @@ def format_data(data):
     if OUTPUT_FORMAT == 'plain':
         for elem in data:
             echo('id: ' + str(elem.id))
-            for attr in elem._attributes.keys():
+            for attr in sorted(elem._attributes.keys()):
                 echo('  ' + attr + ': ' + str(getattr(elem, attr)))
 
     # FIXME id on top in json
