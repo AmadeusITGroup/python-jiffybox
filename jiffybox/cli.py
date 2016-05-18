@@ -6,7 +6,6 @@ from click import echo, echo_via_pager
 
 from .api import JiffyBox
 
-
 API = None
 OUTPUT_FORMAT = None
 USE_PAGER = None
@@ -44,12 +43,13 @@ def print_data(data):
 
 @click.group()
 @click.version_option()
-@click.option('--api-key', envvar='JIFFYBOX_API_KEY',
+@click.option('--api-key',
+              envvar='JIFFYBOX_API_KEY',
               help='also read from JIFFYBOX_API_KEY',
               required=True)
 @click.option('-v', '--verbose', count=True)
-@click.option('--output-format', type=click.Choice(['plain', 'json',
-                                                    'json-pretty']))
+@click.option('--output-format',
+              type=click.Choice(['plain', 'json', 'json-pretty']))
 @click.option('--pager', is_flag=True)
 def jiffybox(api_key, verbose, output_format, pager):
     global API, OUTPUT_FORMAT, USE_PAGER
@@ -83,9 +83,12 @@ def show_box(id):
 @click.argument('distribution')
 @click.option('--sshkey/--no-sshkey', is_flag=True, default=True)
 def create_box(name, plan, distribution, sshkey):
-    box = API.create_box(name, plan, distribution=distribution,
+    box = API.create_box(name,
+                         plan,
+                         distribution=distribution,
                          use_sshkey=sshkey)
     print_data([box])
+
 
 @box.command('delete')
 @click.argument('id')
@@ -95,11 +98,11 @@ def delete_box(id, no_confirm):
         API.delete_box(id)
     else:
         box = API.box(id)
-        click.confirm(
-                'Really delete box {0} ({1})?'.format(id, box.name),
-                abort=True)
+        click.confirm('Really delete box {0} ({1})?'.format(id, box.name),
+                      abort=True)
         if not box.delete():
             raise click.exceptions.RuntimeError('could not delete box')
+
 
 @jiffybox.command()
 def distributions():
