@@ -62,7 +62,6 @@ def box():
 
 
 @box.command('list')
-@click.confirmation_option(prompt='This may take some time')
 def list_boxes():
     print_data(API.boxes())
 
