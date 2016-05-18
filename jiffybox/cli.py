@@ -56,7 +56,7 @@ def jiffybox(api_key, verbose, output_format, pager):
     USE_PAGER = pager
 
 
-@jiffybox.group('box')
+@jiffybox.group('box', help='Manage boxes')
 def box():
     pass
 
@@ -100,11 +100,11 @@ def delete_box(id, no_confirm):
             raise click.exceptions.RuntimeError('could not delete box')
 
 
-@jiffybox.command()
+@jiffybox.command(help='Show a list of distributions')
 def distributions():
     print_data(API.distributions())
 
 
-@jiffybox.command()
+@jiffybox.command(help='Show a list of pricing plans')
 def plans():
     print_data(API.plans())
