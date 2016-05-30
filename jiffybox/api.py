@@ -317,6 +317,10 @@ class JiffyBox(object):
         """
         List all boxes in the account.
 
+        .. warning:: As noted in the API docs, this call is fairly expensive
+                     and should not be used to monitor status with a high
+                     refresh rate.
+
         :rtype: List of :class:`boxes <Box>`
         """
         return Box.all(self)
