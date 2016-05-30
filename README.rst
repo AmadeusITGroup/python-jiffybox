@@ -18,7 +18,6 @@ Planned features
 ----------------
 
 * Implement the whole API
-* Use metaclasses instead of ugly hacks in ``__init__()``
 * Make string version of objects less ugly
 * Tests
 

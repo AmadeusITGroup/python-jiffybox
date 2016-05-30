@@ -24,6 +24,7 @@ setup(name='jiffybox',
       zip_safe=True,
       install_requires=[
           'requests',
+          'six',
       ],
       extras_require={
           'cli': [

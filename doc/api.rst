@@ -16,4 +16,5 @@ Classes
 -------
 
 .. automodule:: jiffybox.api
+    :undoc-members:
     :members: JiffyBox, Box, Distribution, Plan
