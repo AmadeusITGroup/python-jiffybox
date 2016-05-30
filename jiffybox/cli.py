@@ -62,10 +62,8 @@ def box():
 
 
 @box.command('list', help='Lists all boxes in account')
-@click.option('--quiet',
-              '-q',
-              is_flag=True,
-              default=False,
+@click.option('--quiet', '-q',
+              is_flag=True, default=False,
               help='Suppress warning at the start')
 def list_boxes(quiet):
     if not quiet:
