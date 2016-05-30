@@ -31,9 +31,6 @@ setup(name='jiffybox',
               'click',
               'visitor>=0.1.3',
           ],
-          'docs': [
-              'jiffybox[cli]',
-          ],
       },
       entry_points='''
       [console_scripts]
