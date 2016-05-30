@@ -22,6 +22,12 @@ Planned features
 * Make string version of objects less ugly
 * Tests
 
+Underlying API
+--------------
+
+The upstream HTTP API this library is using is documented on
+https://www.df.eu/fileadmin/media/doc/jiffybox-api-dokumentation.pdf.
+
 Note
 ----
 
