@@ -28,7 +28,8 @@ setup(name='jiffybox',
       ],
       extras_require={
           'cli': [
-              'click', 'visitor>=1.3.0'
+              'click',
+              'visitor>=0.1.3',
           ],
       },
       entry_points='''
