@@ -261,6 +261,10 @@ class Box(_JiffyResource):
         res = self._put(endpoint=self.id, data={'status': 'START'})
         return type(self)(res, self.api)
 
+    def stop(self):
+        res = self._put(endpoint=self.id, data={'status': 'SHUTDOWN'})
+        return type(self)(res, self.api)
+
     @property
     def public_ips(self):
         return self.ips.get('public', None)
@@ -297,6 +301,10 @@ class JiffyBox(object):
     def boxes(self):
         """
         List all boxes in the account.
+
+        .. warning:: As noted in the API docs, this call is fairly expensive
+                     and should not be used to monitor status with a high
+                     refresh rate.
 
         :rtype: List of :class:`boxes <Box>`
         """
