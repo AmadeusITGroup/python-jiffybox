@@ -15,7 +15,7 @@ def generate_help_texts(command, prefix):
         command.get_help(ctx),
     )
 
-    if isinstance(command, click.core.Group):
+    if isinstance(command, click.core.MultiCommand):
         for c in command.list_commands(ctx):
             c = command.resolve_command(ctx, [c])[1]
             prefix.append(c.name)
