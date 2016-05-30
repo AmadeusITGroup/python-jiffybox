@@ -62,7 +62,17 @@ def box():
 
 
 @box.command('list', help='Lists all boxes in account')
-def list_boxes():
+@click.option('--quiet',
+              '-q',
+              is_flag=True,
+              default=False,
+              help='Suppress warning at the start')
+def list_boxes(quiet):
+    if not quiet:
+        echo('Please use this API call sparingly; see '
+             'https://www.df.eu/fileadmin/user_upload/'
+             'jiffybox-api-dokumentation.pdf [pg. 10] for details.',
+             err=True)
     print_data(API.boxes())
 
 
