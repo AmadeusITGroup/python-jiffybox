@@ -17,6 +17,4 @@ The program will be installed as ``jiffybox``.
 For the complete documentation of the command line interface see the builtin
 help.
 
-.. code-block:: bash
-
-  $ jiffybox --help
+.. jiffybox:click-help:: jiffybox

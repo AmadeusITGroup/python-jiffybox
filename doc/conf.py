@@ -3,6 +3,9 @@
 import datetime
 import os
 import pkg_resources
+import sys
+
+sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
@@ -16,7 +19,10 @@ release = version
 this_year = datetime.date.today().year
 copyright = 'Amadeus IT Group'
 
-extensions = ['sphinx.ext.autodoc']
+extensions = [
+    'sphinx.ext.autodoc',
+    'jiffyboxdoctools',
+]
 templates_path = ['_templates']
 source_suffix = '.rst'
 master_doc = 'index'
