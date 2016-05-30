@@ -7,18 +7,6 @@ from sphinx.util.compat import Directive
 import click
 
 
-def all_commands(command):
-    yield command
-
-    context = click.Context(command)
-
-    for c in context.command.list_commands(context):
-        group = context.command.resolve_command(context, [c])[1]
-        yield group
-        ctx = click.Context(c)
-        group.get_help(ctx)
-
-
 def generate_help_texts(command, prefix):
     ctx = click.Context(command)
     yield make_block(
