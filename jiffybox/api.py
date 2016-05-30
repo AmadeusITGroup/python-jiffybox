@@ -1,7 +1,8 @@
-import requests
 import datetime
-import time
 import logging
+import time
+
+import requests
 
 from .exceptions import JiffyAttributeException, JiffyMessageException
 
