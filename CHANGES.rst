@@ -7,7 +7,7 @@ X.X.X (unreleased)
 - Nothing changed yet
 
 0.10.2 (2016-05-31)
-------------------
+-------------------
 
 - Unbreak help generation
 

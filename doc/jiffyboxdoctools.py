@@ -9,7 +9,7 @@ import click
 
 def generate_help_texts(command, prefix):
     ctx = click.Context(command)
-    help_opts = command.get_help_option(ctx).opts,
+    help_opts = command.get_help_option(ctx).opts
     if help_opts:
         yield make_block(
             ' '.join(prefix),
