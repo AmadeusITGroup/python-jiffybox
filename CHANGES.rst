@@ -7,7 +7,7 @@ X.X.X (unreleased)
 - Nothing changed yet
 
 0.10.0 (2016-05-31)
-------------------
+-------------------
 
 - Reworked plaintext cli formatter
 - Switch to metaclasses instead of `__init__` hacks
