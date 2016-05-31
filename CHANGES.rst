@@ -4,7 +4,7 @@ Changelog for jiffybox
 X.X.X (unreleased)
 ------------------
 
-- Nothing changed yet
+- Documentation fixes
 
 0.10.0 (2016-05-31)
 -------------------

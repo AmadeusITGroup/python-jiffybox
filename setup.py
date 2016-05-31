@@ -1,8 +1,18 @@
 # coding=utf-8
 
 from codecs import open
+import re
 
 from setuptools import setup
+
+
+def strip_ref_directives(text):
+    def cb(match):
+        group = match.group(0)
+        return group.split('`', 1)[1].rsplit('<', 1)[0].strip()
+
+    return re.sub(r':ref:`[^`]+`', cb, text)
+
 
 with open('README.rst', 'r', 'utf-8') as f:
     readme = f.read()
@@ -12,7 +22,9 @@ with open('CHANGES.rst', 'r', 'utf-8') as f:
 setup(name='jiffybox',
       version='0.10.0',
       description='API wrapper for jiffybox.de',
-      long_description=readme + '\n\n' + changes,
+      long_description=strip_ref_directives(
+          readme + '\n\n' + changes,
+      ),
       author='Amadeus IT Group',
       author_email='opensource@amadeus.com',
       maintainer='Thomas Weißschuh',
