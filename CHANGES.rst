@@ -4,10 +4,10 @@ Changelog for jiffybox
 X.X.X (unreleased)
 ------------------
 
-- Nothing changed yet
+- Unbreak help generation
 
 0.10.1 (2016-05-31)
-------------------
+-------------------
 
 - Documentation fixes
 

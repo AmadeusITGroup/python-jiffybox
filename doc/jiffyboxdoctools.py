@@ -13,7 +13,7 @@ def generate_help_texts(command, prefix):
     if help_opts:
         yield make_block(
             ' '.join(prefix),
-            help_opts.pop(0),
+            help_opts[0],
             command.get_help(ctx),
         )
 
