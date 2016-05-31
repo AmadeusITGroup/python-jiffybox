@@ -9,11 +9,13 @@ import click
 
 def generate_help_texts(command, prefix):
     ctx = click.Context(command)
-    yield make_block(
-        ' '.join(prefix),
-        command.get_help_option(ctx).opts[0],
-        command.get_help(ctx),
-    )
+    help_opts = command.get_help_option(ctx).opts,
+    if help_opts:
+        yield make_block(
+            ' '.join(prefix),
+            help_opts.pop(0),
+            command.get_help(ctx),
+        )
 
     if isinstance(command, click.core.MultiCommand):
         for c in command.list_commands(ctx):
