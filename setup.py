@@ -20,7 +20,7 @@ with open('CHANGES.rst', 'r', 'utf-8') as f:
     changes = f.read()
 
 setup(name='jiffybox',
-      version='0.10.0',
+      version='0.10.1',
       description='API wrapper for jiffybox.de',
       long_description=strip_ref_directives(
           readme + '\n\n' + changes,
