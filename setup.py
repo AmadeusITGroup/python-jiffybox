@@ -38,7 +38,7 @@ tests_require.extend(install_requires)
 tests_require.extend(cli_requires)
 
 setup(name='jiffybox',
-      version='0.10.2',
+      version='0.11.0',
       description='API wrapper for jiffybox.de',
       long_description=strip_ref_directives(
           readme + '\n\n' + changes,
