@@ -18,7 +18,7 @@ class _JiffyObject(object):
     def __init__(self, json, api=None, id_=None):
         self.api = api
         self._json_data = json
-        self.id = id_
+        self._upstream_id = id_
 
     @staticmethod
     def _time_from_epoch(timestamp):

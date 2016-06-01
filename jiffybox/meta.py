@@ -2,24 +2,29 @@ from .exceptions import JiffyAttributeException
 
 
 class _JiffyObjectAttribute(object):
-    def __init__(self, name, optional, filter):
+    def __init__(self, name, optional, filter, fallback_attr=None):
         self.name = name
         self.optional = optional
         self.filter = filter
+        self.fallback_attr = fallback_attr
         self.__doc__ = 'JSON-Field `{}`'.format(name)
 
     def __get__(self, obj, type=None):
         if obj is None:
             return self
 
-        json_value = obj._json_data.get(self.name)
-        if json_value is None and not self.optional:
-            raise JiffyAttributeException(self.name, json_value,
+        value = obj._json_data.get(self.name)
+
+        if value is None and self.fallback_attr:
+            value = obj.get(self.fallback_attr)
+
+        if value is None and not self.optional:
+            raise JiffyAttributeException(self.name, value,
                                           self._json_data, type(self))
 
-        if self.filter is not None and json_value is not None:
-            return self.filter(json_value)
-        return json_value
+        if self.filter is not None and value is not None:
+            return self.filter(value)
+        return value
 
 
 class _JiffyObjectMeta(type):
@@ -34,9 +39,8 @@ class _JiffyObjectMeta(type):
                  attr_name, optional, filter,
             )
 
-        if final_attrs.get('id') is None:
-            final_attrs['id'] = _JiffyObjectAttribute(
-                'id', False, None,
-            )
+        final_attrs['id'] = _JiffyObjectAttribute(
+            'id', False, None, '_upstream_id',
+        )
 
         return type.__new__(metaclass, name, parents, final_attrs)
