@@ -22,7 +22,7 @@ with open('CHANGES.rst', 'r', 'utf-8') as f:
 
 
 needs_pytest = set(['pytest', 'test']).intersection(sys.argv)
-pytest_runner = ['pytest-runner'] if needs_pytest else []
+setup_requires = ['pytest-runner'] if needs_pytest else []
 
 install_requires = [
     'requests',
@@ -32,10 +32,9 @@ cli_requires = [
     'click',
     'visitor>=0.1.3',
 ]
-tests_require = ['pytest', 'requests_mock']
+tests_require = ['pytest', 'requests_mock', 'pytest-runner']
 tests_require.extend(install_requires)
 tests_require.extend(cli_requires)
-tests_require.extend(pytest_runner)
 
 setup(name='jiffybox',
       version='0.11.0',
@@ -57,7 +56,7 @@ setup(name='jiffybox',
           'cli': cli_requires,
           'tests': tests_require,
       },
-      setup_requires=pytest_runner,
+      setup_requires=setup_requires,
       tests_require=tests_require,
       entry_points='''
       [console_scripts]
