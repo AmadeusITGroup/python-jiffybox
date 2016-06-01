@@ -7,10 +7,6 @@ import sys
 from setuptools import setup
 
 
-needs_pytest = set(['pytest', 'test']).intersection(sys.argv)
-pytest_runner = ['pytest-runner'] if needs_pytest else []
-
-
 def strip_ref_directives(text):
     def cb(match):
         group = match.group(0)
@@ -25,6 +21,9 @@ with open('CHANGES.rst', 'r', 'utf-8') as f:
     changes = f.read()
 
 
+needs_pytest = set(['pytest', 'test']).intersection(sys.argv)
+pytest_runner = ['pytest-runner'] if needs_pytest else []
+
 install_requires = [
     'requests',
     'six',
@@ -36,6 +35,7 @@ cli_requires = [
 tests_require = ['pytest', 'requests_mock']
 tests_require.extend(install_requires)
 tests_require.extend(cli_requires)
+tests_require.extend(pytest_runner)
 
 setup(name='jiffybox',
       version='0.11.0',
