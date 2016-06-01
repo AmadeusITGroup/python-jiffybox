@@ -7,7 +7,7 @@ import sys
 from setuptools import setup
 
 
-needs_pytest = {'pytest', 'test'}.intersection(sys.argv)
+needs_pytest = set(['pytest', 'test']).intersection(sys.argv)
 pytest_runner = ['pytest-runner'] if needs_pytest else []
 
 
