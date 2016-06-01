@@ -33,7 +33,7 @@ cli_requires = [
     'click',
     'visitor>=0.1.3',
 ]
-tests_require = ['pytest', 'responses']
+tests_require = ['pytest', 'requests_mock']
 tests_require.extend(install_requires)
 tests_require.extend(cli_requires)
 
