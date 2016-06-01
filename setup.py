@@ -24,6 +24,19 @@ with open('README.rst', 'r', 'utf-8') as f:
 with open('CHANGES.rst', 'r', 'utf-8') as f:
     changes = f.read()
 
+
+install_requires = [
+    'requests',
+    'six',
+]
+cli_requires = [
+    'click',
+    'visitor>=0.1.3',
+]
+tests_require = ['pytest']
+tests_require.extend(install_requires)
+tests_require.extend(cli_requires)
+
 setup(name='jiffybox',
       version='0.10.2',
       description='API wrapper for jiffybox.de',
@@ -39,22 +52,13 @@ setup(name='jiffybox',
       license='GPL3',
       keywords='API jiffybox domainfactory',
       zip_safe=True,
-      install_requires=[
-          'requests',
-          'six',
-      ],
+      install_requires=install_requires,
       extras_require={
-          'cli': [
-              'click',
-              'visitor>=0.1.3',
-          ],
-          'tests': [
-              'click',
-              'visitor>=0.1.3',
-          ],
+          'cli': cli_requires,
+          'tests': tests_require,
       },
       setup_requires=pytest_runner,
-      tests_require=['pytest', '.[tests]'],
+      tests_require=tests_require,
       entry_points='''
       [console_scripts]
       jiffybox=jiffybox.cli:jiffybox
