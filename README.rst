@@ -1,6 +1,12 @@
 jiffybox
 ========
 
+.. image:: https://img.shields.io/pypi/v/jiffybox.svg
+    :target: https://pypi.python.org/pypi/jiffybox
+
+.. image:: https://api.travis-ci.org/AmadeusITGroup/python-jiffybox.svg
+        :target: https://travis-ci.org/AmadeusITGroup/python-jiffybox
+
 A wrapper around the API of JiffyBox (http://jiffybox.de)
 Consisting of a :ref:`python library <api>`
 and a :ref:`command line program <cli>` using the library.
