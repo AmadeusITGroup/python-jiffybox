@@ -27,10 +27,10 @@ class PlainFormatVisitor(Visitor):
                 buf += node.name
             if hasattr(node, 'id'):
                 buf += '({})'.format(node.id)
-            obj_dict = {
-                attr: getattr(node, attr)
+            obj_dict = dict(
+                (attr, getattr(node, attr))
                 for attr in node._attributes.keys()
-            }
+            )
             buf += self.visit(obj_dict)
             return buf
         return str(node)
