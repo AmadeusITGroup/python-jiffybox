@@ -408,4 +408,4 @@ class JiffyBox(object):
     def _make_url(self, api_location, endpoint=''):
         endpoint = str(endpoint)
         return '/'.join([self.api_url, self._api_key, self.api_version,
-                         api_location, endpoint])
+                         api_location, endpoint]).rstrip('/')

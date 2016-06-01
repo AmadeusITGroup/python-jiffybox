@@ -4,10 +4,10 @@ Changelog for jiffybox
 X.X.X (unreleased)
 ------------------
 
-- Nothing changed yet
+- Add more tests
 
 0.11.0 (2016-06-01)
-------------------
+-------------------
 
 - Add `Plan.priceCap`
 - Packaging and documentation fixes
