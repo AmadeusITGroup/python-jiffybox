@@ -22,7 +22,7 @@ class JiffyMock(requests_mock.Mocker):
     def add_response_fixture(self, method, data, *parts):
         body_path = os.path.join(HERE, 'fixtures', method, *parts) + '.json'
         with open(os.path.join(body_path),
-                  'rb') as f:
+                  'r') as f:
             body = f.read()
 
         def text_cb(request, context):
@@ -52,7 +52,7 @@ def test_invalid_api_module(api, jiffy_mock):
         with pytest.raises(jiffybox.api.JiffyMessageException) as e:
             api._get('test')
 
-        messages, response = e.value
+        messages, response = e.value.args
         assert messages == [{
             'type': 'error',
             'message': 'Das Modul test existiert nicht'
