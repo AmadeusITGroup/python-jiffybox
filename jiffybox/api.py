@@ -83,7 +83,7 @@ class Plan(_JiffyResource):
     """
     _attributes = {'cpus': None,
                    'diskSizeInMB': None,
-                   'id': {'filter': str},
+                   'id': None,
                    'name': None,
                    'pricePerHour': None,
                    'pricePerHourFrozen': None,
