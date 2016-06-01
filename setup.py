@@ -2,8 +2,13 @@
 
 from codecs import open
 import re
+import sys
 
 from setuptools import setup
+
+
+needs_pytest = {'pytest', 'test'}.intersection(sys.argv)
+pytest_runner = ['pytest-runner'] if needs_pytest else []
 
 
 def strip_ref_directives(text):
@@ -44,6 +49,8 @@ setup(name='jiffybox',
               'visitor>=0.1.3',
           ],
       },
+      setup_requires=pytest_runner,
+      tests_require=['pytest'],
       entry_points='''
       [console_scripts]
       jiffybox=jiffybox.cli:jiffybox
