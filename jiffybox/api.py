@@ -87,6 +87,7 @@ class Plan(_JiffyResource):
                    'name': None,
                    'pricePerHour': None,
                    'pricePerHourFrozen': None,
+                   'priceCap': None,
                    'ramInMB': None,
                    }
     _api_location = 'plans'
