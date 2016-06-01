@@ -7,7 +7,7 @@ class _JiffyObjectAttribute(object):
         self.optional = optional
         self.filter = filter
         self.fallback_attr = fallback_attr
-        self.__doc__ = 'JSON-Field `{}`'.format(name)
+        self.__doc__ = 'JSON-Field `{0}`'.format(name)
 
     def __get__(self, obj, type=None):
         if obj is None:
