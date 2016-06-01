@@ -15,6 +15,8 @@ Docs: http://python-jiffybox.readthedocs.io
 
 Downloads: https://pypi.python.org/pypi/jiffybox/
 
+Source: https://github.com/AmadeusITGroup/python-jiffybox
+
 Current features
 ----------------
 
