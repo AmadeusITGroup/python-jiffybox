@@ -48,9 +48,12 @@ setup(name='jiffybox',
               'click',
               'visitor>=0.1.3',
           ],
+          'tests': [
+              '.[cli]',
+          ],
       },
       setup_requires=pytest_runner,
-      tests_require=['pytest'],
+      tests_require=['pytest', '.[tests]'],
       entry_points='''
       [console_scripts]
       jiffybox=jiffybox.cli:jiffybox
