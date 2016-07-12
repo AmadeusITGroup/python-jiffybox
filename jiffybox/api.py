@@ -229,6 +229,9 @@ class Box(_JiffyResource):
 
             data['distribution'] = distribution
 
+        if password is not None:
+            data['password'] = password
+
         if use_sshkey is not None:
             data['use_sshkey'] = use_sshkey
 
